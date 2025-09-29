@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Military Brief — Drones in the Ukraine Conflict (Comprehensive Catalog & Reports)</title>
+  <style>
+    :root {
+      --bg: #05060a;
+      --panel: #07101a;
+      --accent: #00f6ff;
+      --muted: #b8c8d2;
+      --danger: #ff5b5b;
+      --glass: rgba(255,255,255,0.03);
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 14px;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #02030a 0%, #081018 60%);
+      color: #dff6fb;
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: var(--panel);
+      border-radius: 12px;
+      box-shadow: 0 10px 60px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 40px);
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .badge {
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    nav {
+      margin: 12px 0;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .chip {
+      background: var(--glass);
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.04);
+      cursor: pointer;
+      color: var(--accent);
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .chip:hover {
+      background: rgba(255,255,255,0.05);
+    }
+    .btn-download {
+      background: var(--accent);
+      color: #05060a;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .btn-download:hover {
+      background: #00d0d9;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 16px;
+      flex-grow: 1;
+    }
+    aside {
+      background: var(--glass);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.02);
+      overflow-y: auto;
+    }
+    section {
+      background: var(--glass);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    .panel-title {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin: 0 0 12px;
+      font-weight: 500;
+    }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .platform-card {
+      background: #06121a;
+      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,0.02);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .platform-thumb {
+      width: 100%;
+      height: 140px;
+      border-radius: 8px;
+      background: #08141a;
+      border: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+      position: relative;
+    }
+    .platform-thumb img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    .platform-thumb span {
+      display: none;
+      font-size: 14px;
+      text-align: center;
+      z-index: 0;
+    }
+    .platform-thumb.no-image span {
+      display: block;
+    }
+    .platform-thumb.no-image img {
+      display: none;
+    }
+    .platform-thumb:hover {
+      transform: scale(1.02);
+    }
+    .meta .title {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 6px 10px;
+      border-radius: 8px;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: rgba(255,255,255,0.05);
+    }
+    .specs {
+      background: #081822;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.02);
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #bfeefc;
+      line-height: 1.4;
+    }
+    .specs ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 8px 0;
+    }
+    .specs ul li {
+      margin-bottom: 4px;
+    }
+    .page {
+      display: none;
+    }
+    .page.active {
+      display: block;
+    }
+    footer {
+      padding: 12px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .press-link {
+      display: block;
+      margin-top: 6px;
+    }
+    input[type="text"], select {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 8px;
+      border-radius: 8px;
+      color: #dff6fb;
+      width: 100%;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-weight: 600;
+    }
+    #modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.7);
+      z-index: 80;
+    }
+    #modal[aria-hidden="false"] {
+      display: flex;
+    }
+    #modal > div {
+      width: 920px;
+      max-width: 96%;
+      background: #071018;
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.6);
+      color: #dff6fb;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    #modal #closeModalContent {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    abbr {
+      cursor: help;
+      border-bottom: 1px dotted var(--accent);
+      color: var(--accent);
+    }
+    .stats-chart {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .stat-item {
+      background: #081822;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.02);
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .media-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .media-section {
+      margin-top: 16px;
+    }
+    .media-preview {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.04);
+      object-fit: contain;
+      cursor: pointer;
+      background: #08141a;
+      position: relative;
+    }
+    .media-preview.video-missing::after {
+      content: 'VIDEO UNAVAILABLE';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      z-index: 1;
+    }
+    .media-preview.video-missing {
+      background: #08141a;
+    }
+    .media-preview.audio-preview {
+      height: auto;
+      padding: 10px;
+      background: #08141a;
+      text-align: center;
+    }
+    .media-preview.audio-preview::before {
+      content: "Audio Clip";
+      color: var(--muted);
+    }
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      aside {
+        max-height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1> OSINT  Ukraine Conflict C-UAS</h1>
+        <div class="sub">Focus: Russian <abbr title="Unmanned Aerial System">UAS</abbr> threat — communications, platform catalog, and implications (updated Sep 29, 2025)</div>
+      </div>
+      <div class="badge">CLASSIFICATION: ANALYTICAL (UNCLASSIFIED)</div>
+    </header>
+    <nav>
+      <button class="chip" data-page="catalog">Catalog</button>
+      <button class="chip" data-page="comms">Communications</button>
+      <button class="chip" data-page="report">In‑Depth Report (UK)</button>
+      <button class="chip" data-page="comparisons">Comparisons</button>
+      <button class="chip" data-page="stats">Statistics</button>
+      <button class="chip" data-page="sources">Linked Sources</button>
+      <button class="btn-download" id="downloadBtn">Download Report</button>
+    </nav>
+    <main>
+      <aside>
+        <div class="panel-title">Contents</div>
+        <ul>
+          <li>Methods of drone communications</li>
+          <li>Catalog: loitering munitions, tactical <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr>, <abbr title="First-Person View">FPV</abbr>, swarm</li>
+          <li>Platform profiles (click thumbnails for specs)</li>
+          <li>In‑depth UK-focused strategic report</li>
+          <li>Drone comparisons (table view)</li>
+          <li>Statistics: percentages, numbers, success rates</li>
+          <li>Download report as HTML</li>
+        </ul>
+        <div class="panel-title" style="margin-top:12px">Notes</div>
+        <div style="color:var(--muted);font-size:0.9rem">This site is a guide to drones used in the Ukraine conflict for UAS identification and planning. <abbr title="Acronyms">Acronyms</abbr> are expandable on hover.</div>
+      </aside>
+      <section>
+        <div id="catalog" class="page active">
+          <h2 class="panel-title">Catalog — Click thumbnails to open platform profiles</h2>
+          <input type="text" id="searchInput" placeholder="Search by name, role, or origin..." aria-label="Search drones">
+          <select id="filterRole" aria-label="Filter by role">
+            <option value="">Filter by role...</option>
+            <option value="loitering">Loitering munition</option>
+            <option value="ISR">ISR / Recon</option>
+            <option value="attack">Attack / Assault</option>
+            <option value="decoy">Decoy</option>
+            <option value="fiber-optic">Fiber-Optic</option>
+          </select>
+          <div id="catalogGrid" class="catalog-grid" aria-live="polite"></div>
+        </div>
+        <div id="comms" class="page">
+          <h2 class="panel-title">Communications — Technical Deep Dive</h2>
+          <div class="specs" id="commsContent"></div>
+        </div>
+        <div id="report" class="page">
+          <h2 class="panel-title">In‑Depth Strategic Report: Ukraine drone warfare & UK implications</h2>
+          <div id="reportContent" class="specs"></div>
+        </div>
+        <div id="sources" class="page">
+          <h2 class="panel-title">Linked Sources (open source)</h2>
+          <div class="specs" id="sourcesList"></div>
+        </div>
+        <div id="comparisons" class="page">
+          <h2 class="panel-title">Drone Comparisons</h2>
+          <div id="comparisonTable" class="specs"></div>
+        </div>
+        <div id="stats" class="page">
+          <h2 class="panel-title">Drone Statistics (Estimated, Sep 2025)</h2>
+          <p style="color:var(--muted);font-size:0.9rem">Based on open-source reporting: Total Russian drone launches in 2025 ~34,000+ attack/decoy. Percentages by type; success rates (hits on target).</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>% of Total</th>
+                <th>Est. Numbers (2025)</th>
+                <th>Success Rate (est.)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Loitering Munitions (e.g., Geran-2)</td><td>60%</td><td>~20,400</td><td>30-40%</td></tr>
+              <tr><td>Tactical ISR (e.g., Orlan-10)</td><td>15%</td><td>~5,100</td><td>70-80%</td></tr>
+              <tr><td>FPV Assault</td><td>20%</td><td>~6,800</td><td>50-60%</td></tr>
+              <tr><td>Fiber-Optic Variants</td><td>3%</td><td>~1,020</td><td>80-90% (EW-resistant)</td></tr>
+              <tr><td>Decoys/Other</td><td>2%</td><td>~680</td><td>10-20%</td></tr>
+            </tbody>
+          </table>
+          <div class="stats-chart">
+            <div class="stat-item"><div class="stat-value">60%</div><div class="stat-label">Loitering</div></div>
+            <div class="stat-item"><div class="stat-value">15%</div><div class="stat-label">ISR</div></div>
+            <div class="stat-item"><div class="stat-value">20%</div><div class="stat-label">FPV</div></div>
+            <div class="stat-item"><div class="stat-value">3%</div><div class="stat-label">Fiber-Optic</div></div>
+            <div class="stat-item"><div class="stat-value">2%</div><div class="stat-label">Other</div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>Document created: local, client-side interactive brief. Use responsibly. Updated Sep 27, 2025.</footer>
+  </div>
+  <div id="modal" role="dialog" aria-hidden="true">
+    <div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+  <script>
+    // Placeholder function for potential CSV/XLSX loading
+    function filledCell(cell) {
+      return cell !== '' && cell != null;
+    }
+    function loadFileData(filename) {
+      return "";
+    }
+
+    // Drone DB
+    const DRONE_DB = {
+      'geran-2': {
+        id: 'geran-2', name: 'Geran‑2 (Shahed‑136 family)', origin: 'Iran / Russia (production)', role: 'Long‑range loitering munition',
+        comms: { c2: 'Autonomous <abbr title="Global Navigation Satellite System">GNSS</abbr>/<abbr title="Inertial Navigation System">INS</abbr> primary; limited telemetry via low‑rate radio modems; some reported command uplinks.' },
+        sensors: ['<abbr title="Global Navigation Satellite System">GNSS</abbr>','<abbr title="Inertial Navigation System">INS</abbr>','basic <abbr title="Electro-Optical">EO</abbr> (terminal)'],
+        notes: 'Mass produced; used for deep strikes and saturation attacks. Production doubled in 2025 with adaptations for resilience.',
+        press: { title: 'IISS — Russia doubles down on the Shahed', url: 'https://www.iiss.org/online-analysis/2025/04/russia-doubles-down-on-the-shahed' },
+        battlefield_use: 'Long-range strikes against infrastructure, power and logistics nodes; often used in massed waves to overwhelm defences. Increased daytime attacks in 2025.',
+        threat_assessment: 'Strategic/operational strike asset — difficult to intercept at range without layered air defence; mass production means attritional effects.',
+        countermeasures: 'Layered air-defence, hardened infrastructure, decoys, and integration of <abbr title="Signals Intelligence">SIGINT</abbr>/<abbr title="Direction Finding">DF</abbr> to localise launch/relay nodes; explore supply-chain interdiction and attribution. Ukrainian interceptor drones effective.',
+        specs: { range: '~1500+ km (est. depending on launch)', endurance: 'hours (loiter core)', payload: '~40-50 kg (warhead)' },
+        thumbnail: 'geran-2_thumb.webp',
+        images: ['geran-2_img1.jpeg', 'geran-2_img2.jpeg', 'geran-2_img3.jpg'],
+        videos: ['geran-2_vid1.mp4', 'geran-2_vid2.mp4', 'geran-2_vid3.mp4'],
+        audio: ['geran-2_audio1.mp3', 'geran-2_audio2.mp3', 'geran-2_audio3.mp3']
+      },
+      'zala-lancet': {
+        id: 'zala-lancet', name: 'ZALA Lancet (Lancet‑1/3)', origin: 'ZALA / Kalashnikov group (Russia)', role: 'Tactical loitering munition (precision)',
+        comms: { c2: 'Short/medium encrypted <abbr title="Radio Frequency">RF</abbr> link + autonomous terminal homing; telemetry bursts for mid-course updates.' },
+        sensors: ['<abbr title="Electro-Optical">EO</abbr> seeker','<abbr title="Inertial Measurement Unit">IMU</abbr>','<abbr title="Global Navigation Satellite System">GNSS</abbr>'],
+        notes: 'Precision tactical strikes; often used with <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> cueing. Innovations in 2025 include fiber-optic variants for <abbr title="Electronic Warfare">EW</abbr> resistance.',
+        press: { title: 'ISW — Russian Drone Innovations', url: 'https://understandingwar.org/research/russia-ukraine/russian-drone-innovations-are-likely-achieving-effects-of-battlefield-air-interdiction-in-ukraine' },
+        battlefield_use: 'Tactical point strikes against armour, artillery, and high-value equipment. Often cued by <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> drones for rapid prosecution.',
+        threat_assessment: 'High tactical threat to exposed equipment and limited hard targets; precise and relatively low-cost.',
+        countermeasures: 'Local <abbr title="Electronic Warfare">EW</abbr> and point-defence interceptors; camouflage and rapid dispersion; capture for forensic exploitation to recover comms info.',
+        specs: { range: '10-40 km', endurance: '30-90 min', payload: '2-10 kg warhead' },
+        thumbnail: 'zala-lancet_thumb.gif',
+        images: ['zala-lancet_img1.webp', 'zala-lancet_img2.jpg', 'zala-lancet_img3.png'],
+        videos: ['zala-lancet_vid1.mp4', 'zala-lancet_vid2.mp4', 'zala-lancet_vid3.mp4'],
+        audio: ['zala-lancet_audio1.mp3', 'zala-lancet_audio2.mp3', 'zala-lancet_audio3.mp3']
+      },
+      'kub-bla': {
+        id: 'kub-bla', name: 'KUB‑BLA family', origin: 'Russia', role: 'Short-range loitering munition',
+        comms: { c2: 'Direct <abbr title="Remote Control">RC</abbr> or short-range datalink; simple architectures to reduce cost.' },
+        sensors: ['<abbr title="Inertial Measurement Unit">IMU</abbr>','<abbr title="Global Navigation Satellite System">GNSS</abbr>(optional)','optical seeker variants'],
+        notes: 'Tactical anti-vehicle and anti-personnel use.',
+        press: { title: 'Forbes / Open reporting on tactical kamikaze use', url: 'https://www.forbes.com/search/?q=lancet%20drone' },
+        battlefield_use: 'Used in tactical strikes in close combat, especially against logistics and artillery emplacements.',
+        threat_assessment: 'Low complexity but high utility in massed tactical attacks; hard to detect at low altitudes with limited sensors.',
+        countermeasures: 'Short-range air-defence, small arms where applicable, acoustic/visual detection at close ranges, and rapid concealment.',
+        specs: { range: '5-20 km', endurance: '20-60 min', payload: '~3 kg' },
+        thumbnail: 'kub-bla_thumb.jpg',
+        images: ['kub-bla_img1.jpg', 'kub-bla_img2.jpg', 'kub-bla_img3.jpg'],
+        videos: ['kub-bla_vid1.webm', 'kub-bla_vid2.webm', 'kub-bla_vid3.mp4'],
+        audio: ['kub-bla_audio1.mp3', 'kub-bla_audio2.mp3', 'kub-bla_audio3.mp3']
+      },
+      'orlan-10': {
+        id: 'orlan-10', name: 'Orlan‑10', origin: 'Russia', role: 'Tactical <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> & target acquisition',
+        comms: { c2: 'Medium-range encrypted <abbr title="Radio Frequency">RF</abbr> datalinks; relay & <abbr title="Signals Intelligence">SIGINT</abbr> payload variants reported.' },
+        sensors: ['<abbr title="Electro-Optical/Infrared">EO/IR</abbr>','<abbr title="Signals Intelligence">SIGINT</abbr> packages','<abbr title="Global Navigation Satellite System">GNSS</abbr>','<abbr title="Inertial Measurement Unit">IMU</abbr>'],
+        notes: 'Widely used for recon, artillery spotting and target designation. Involved in border incursions in 2025.',
+        press: { title: 'ISW — Russian Offensive Campaign Assessment (Sep 26, 2025)', url: 'https://understandingwar.org/research/russia-ukraine/russian-offensive-campaign-assessment-september-26-2025' },
+        battlefield_use: 'Persistent <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr>, artillery spotting, <abbr title="Radio Frequency">RF</abbr> <abbr title="Signals Intelligence">SIGINT</abbr> and battle damage assessment; often functions as a node in sensor-to-shooter loops.',
+        threat_assessment: 'Enables high-tempo targeting and improves effectiveness of loitering munitions; hard to counter without <abbr title="Signals Intelligence">SIGINT</abbr>/<abbr title="Direction Finding">DF</abbr> and <abbr title="Electronic Warfare">EW</abbr>.',
+        countermeasures: 'Wideband <abbr title="Radio Frequency">RF</abbr> monitoring, directed <abbr title="Electronic Warfare">EW</abbr>, capture of nodes for exploitation, and shoot-downs using integrated AA systems.',
+        specs: { range: '120+ km', endurance: '12-24 h', payload: '~15 kg' },
+        thumbnail: 'orlan-10_thumb.jpg',
+        images: ['orlan-10_img1.webp', 'orlan-10_img2.jpg', 'orlan-10_img3.jpg'],
+        videos: ['orlan-10_vid1.webm', 'orlan-10_vid2.webm', 'orlan-10_vid3.mp4'],
+        audio: ['orlan-10_audio1.mp3', 'orlan-10_audio2.mp3', 'orlan-10_audio3.mp3']
+      },
+      'forpost-r': {
+        id: 'forpost-r', name: 'Forpost‑R (Searcher derivatives)', origin: 'Russia (IAI-derived)', role: 'Larger tactical <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> / armed variants',
+        comms: { c2: 'Longer-range datalinks, sometimes <abbr title="Satellite Communications">SATCOM</abbr> relay; encrypted links in military variants.' },
+        sensors: ['High-res <abbr title="Electro-Optical/Infrared">EO/IR</abbr>','laser designator in some variants','<abbr title="Global Navigation Satellite System">GNSS</abbr>'],
+        notes: 'Higher-altitude <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> and occasional strike roles.',
+        press: { title: 'Reuters/analysis on Forpost and <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> trends', url: 'https://www.reuters.com/' },
+        battlefield_use: 'Higher-altitude persistent <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr>, long-range target acquisition and coordination of strikes.',
+        threat_assessment: 'Strategic <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> that increases situational awareness and enables long-range strike coordination; vulnerable to long-range <abbr title="Electronic Warfare">EW</abbr> and <abbr title="Direction Finding">DF</abbr> when identified.',
+        countermeasures: 'Layered air defences, long-range <abbr title="Electronic Warfare">EW</abbr>, targeting of launch and relay infrastructure, and cyber/<abbr title="Signals Intelligence">SIGINT</abbr> operations to disrupt command links.',
+        specs: { range: '200+ km', endurance: '20+ h', payload: '~50 kg' },
+        thumbnail: 'forpost-r_thumb.jpg',
+        images: ['forpost-r_img1.jpg', 'forpost-r_img2.jpg', 'forpost-r_img3.jpg'],
+        videos: ['forpost-r_vid1.webm', 'forpost-r_vid2.mp4', 'forpost-r_vid3.mp4'],
+        audio: ['forpost-r_audio1.mp3', 'forpost-r_audio2.mp3', 'forpost-r_audio3.mp3']
+      },
+      'eleron-3': {
+        id: 'eleron-3', name: 'Eleron‑3 family', origin: 'Russia', role: 'Short-range <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> & artillery spotting',
+        comms: { c2: 'Analog/digital <abbr title="Remote Control">RC</abbr> in earlier variants; newer digital variants use encrypted <abbr title="Remote Control">RC</abbr> or <abbr title="Long Term Evolution">LTE</abbr> fallback.' },
+        sensors: ['<abbr title="Electro-Optical">EO</abbr> gimbal','<abbr title="Global Navigation Satellite System">GNSS</abbr>','<abbr title="Inertial Measurement Unit">IMU</abbr>'],
+        notes: 'Common small tactical recon <abbr title="Unmanned Aerial System">UAS</abbr>.',
+        press: { title: 'Local reporting on small tactical <abbr title="Unmanned Aerial System">UAS</abbr> use', url: 'https://www.bbc.co.uk/search?q=eleron+drone' },
+        battlefield_use: 'Platoon-level <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr>, quick target spotting, and artillery correction.',
+        threat_assessment: 'Low-cost <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> that improves local targeting; easily countered with basic <abbr title="Counter-Unmanned Aerial System">C-UAS</abbr> measures at short ranges.',
+        countermeasures: 'Short-range detection (acoustic/visual), small portable <abbr title="Electronic Warfare">EW</abbr> units, rapid concealment and movement of high-value assets.',
+        specs: { range: '10-50 km', endurance: '1-3 h', payload: '1-5 kg' },
+        thumbnail: 'eleron-3_thumb.webp',
+        images: ['eleron-3_img1.jpg', 'eleron-3_img2.jpg', 'eleron-3_img3.jpg'],
+        videos: ['eleron-3_vid1.mp4', 'eleron-3_vid2.mp4', 'eleron-3_vid3.mp4'],
+        audio: ['eleron-3_audio1.mp3', 'eleron-3_audio2.mp3', 'eleron-3_audio3.mp3']
+      },
+      'supercam': {
+        id: 'supercam', name: 'SuperCam / Merlin‑VR family', origin: 'Russia', role: 'Tactical <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> & <abbr title="Electronic Support Measures">ESM</abbr>',
+        comms: { c2: 'Enhanced <abbr title="Radio Frequency">RF</abbr> sensors for emitter detection; encrypted <abbr title="Command and Control">C2</abbr> in advanced builds.' },
+        sensors: ['<abbr title="Electro-Optical/Infrared">EO/IR</abbr>','<abbr title="Radio Frequency Direction Finding">RF DF</abbr>','<abbr title="Global Navigation Satellite System">GNSS</abbr>'],
+        notes: 'Used for emitter detection and high-fidelity <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr>.',
+        press: { title: 'Defense analysis on <abbr title="Electronic Support Measures">ESM</abbr>-capable <abbr title="Unmanned Aerial System">UAS</abbr>', url: 'https://www.iiss.org/' },
+        battlefield_use: 'Emitter detection, signals intelligence, and cueing of electronic attack or kinetic strikes.',
+        threat_assessment: 'Increases enemy situational awareness of friendly emissions; enables effective suppression and targeting of emitters.',
+        countermeasures: 'Emission control (<abbr title="Emission Control">EMCON</abbr>), deceptive transmissions, and rapid repositioning of emitters; priority <abbr title="Signals Intelligence">SIGINT</abbr> exploitation.',
+        specs: { range: '100+ km', endurance: '6-12 h', payload: '~20 kg' },
+        thumbnail: 'supercam_thumb.jpg',
+        images: ['supercam_img1.png', 'supercam_img2.jpeg', 'supercam_img3.jpg'],
+        videos: ['supercam_vid1.mp4', 'supercam_vid2.mp4', 'supercam_vid3.mp4'],
+        audio: ['supercam_audio1.mp3', 'supercam_audio2.mp3', 'supercam_audio3.mp3']
+      },
+      'fpv-attack': {
+        id: 'fpv-attack', name: '<abbr title="First-Person View">FPV</abbr> assault craft (improvised)', origin: 'Commercial / improvised', role: 'Short-range assault / harassment',
+        comms: { c2: 'Analog/digital low-latency <abbr title="First-Person View">FPV</abbr> links (2.4/5.8 <abbr title="Gigahertz">GHz</abbr>); manual <abbr title="Remote Control">RC</abbr> control, often minimal encryption.' },
+        sensors: ['<abbr title="First-Person View">FPV</abbr> camera','<abbr title="Inertial Measurement Unit">IMU</abbr>','<abbr title="Global Navigation Satellite System">GNSS</abbr>(optional)'],
+        notes: 'Cheap, agile, used for precision strikes and <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> at short ranges. Fiber-optic variants emerged in 2025 for <abbr title="Electronic Warfare">EW</abbr> immunity.',
+        press: { title: 'Journalist reports on <abbr title="First-Person View">FPV</abbr> use in Ukraine', url: 'https://www.bellingcat.com/search/?q=fpv' },
+        battlefield_use: 'Direct attack on exposed personnel/vehicles and rapid harassment of logistics; often used in swarm or combined attacks.',
+        threat_assessment: 'High lethality at short ranges when used in numbers; hard to stop with long-range systems but vulnerable to small arms and local <abbr title="Electronic Warfare">EW</abbr>.',
+        countermeasures: 'Physical barriers, rapid dispersion, short-range interceptors, electronic jamming of common <abbr title="First-Person View">FPV</abbr> bands and visual/thermal detection.',
+        specs: { range: '<5 km', endurance: '10-30 min', payload: 'small munitions / shaped charge' },
+        thumbnail: 'fpv-attack_thumb.webp',
+        images: ['fpv-attack_img1.png', 'fpv-attack_img2.avif', 'fpv-attack_img3.webp'],
+        videos: ['fpv-attack_vid1.webm', 'fpv-attack_vid2.webm', 'fpv-attack_vid3.mp4'],
+        audio: ['fpv-attack_audio1.mp3', 'fpv-attack_audio2.mp3', 'fpv-attack_audio3.mp3']
+      },
+      'fiber-optic-fpv': {
+        id: 'fiber-optic-fpv', name: 'Fiber-Optic <abbr title="First-Person View">FPV</abbr> Drone (Rubicon variant)', origin: 'Russia (improvised, Rubicon unit)', role: 'Short-range assault (EW-resistant)',
+        comms: { c2: 'Fiber-optic cable for unjammable control; repeater drones extend range up to 20+ km; immune to <abbr title="Electronic Warfare">EW</abbr> jamming.' },
+        sensors: ['<abbr title="First-Person View">FPV</abbr> camera','<abbr title="Inertial Measurement Unit">IMU</abbr>','basic optical seeker'],
+        notes: 'Introduced in 2025; used by elite units like Rubicon for precise strikes in contested <abbr title="Electronic Warfare">EW</abbr> environments. Causes plastic pollution from discarded cables.',
+        press: { title: 'Forbes — New Russian Fiber-Optic Drones Expand Strike Range', url: 'https://www.forbes.com/sites/vikrammittal/2025/09/25/russia-introduces-fiber-optic-repeater-drones-to-increase-strike-range/' },
+        battlefield_use: 'Tactical assaults on fortifications and vehicles; effective in urban/jammed areas, reshaping close combat in Donetsk and Kursk.',
+        threat_assessment: 'Game-changer for <abbr title="Electronic Warfare">EW</abbr>-denied environments; high precision but limited by cable length and tangling risks.',
+        countermeasures: 'Physical disruption of cables, acoustic detection, rapid maneuver to avoid loiter patterns; environmental cleanup for pollution.',
+        specs: { range: '10-41 km (with repeaters)', endurance: '15-45 min', payload: '1-3 kg explosive' },
+        thumbnail: 'fiber-optic-fpv_thumb.webp',
+        images: ['fiber-optic-fpv_img1.jfif', 'fiber-optic-fpv_img2.jpg', 'fiber-optic-fpv_img3.jpeg'],
+        videos: ['fiber-optic-fpv_vid1.mp4', 'fiber-optic-fpv_vid2.mp4', 'fiber-optic-fpv_vid3.mp4'],
+        audio: ['fiber-optic-fpv_audio1.mp3', 'fiber-optic-fpv_audio2.mp3', 'fiber-optic-fpv_audio3.mp3']
+      },
+      'gerbera': {
+        id: 'gerbera', name: 'Gerbera (decoy / imitator)', origin: 'Russia', role: 'Decoy / signature mimic',
+        comms: { c2: 'Minimal; some variants carry simple modems or cameras to detect interceptors.' },
+        sensors: ['Basic <abbr title="Global Navigation Satellite System">GNSS</abbr>','visual sensors (reported)'],
+        notes: 'Used to saturate defences and mimic higher-value threats. 2025 adaptations include back-facing cameras to detect interceptor drones.',
+        press: { title: 'Business Insider — Gerbera back cameras & tactics', url: 'https://www.businessinsider.com/gerbera-back-cameras-russia-shahed-drone-war-interceptor-2025-9' },
+        battlefield_use: 'Saturation attacks, decoying interceptors, and limited reconnaissance. Used in waves with Shaheds.',
+        threat_assessment: 'Multiplicative effect — lowers defender decision quality and wastes interceptors; useful in shaping attacks.',
+        countermeasures: 'Priority <abbr title="Signals Intelligence">SIGINT</abbr> and <abbr title="Direction Finding">DF</abbr> exploitation to confirm signature, then dedicated low-cost interceptors for confirmed threats.',
+        specs: { range: '100+ km', endurance: '5+ h', payload: 'Decoy payload / minimal electronics' },
+        thumbnail: 'gerbera_thumb.jpg',
+        images: ['gerbera_img1.jpg', 'gerbera_img2.webp', 'gerbera_img3.jpg'],
+        videos: ['gerbera_vid1.mp4', 'gerbera_vid2.mp4', 'gerbera_vid3.mp4'],
+        audio: ['gerbera_audio1.mp3', 'gerbera_audio2.mp3', 'gerbera_audio3.mp3']
+      }
+    };
+
+    // DOM Elements
+    const catalogGrid = document.getElementById('catalogGrid');
+    const searchInput = document.getElementById('searchInput');
+    const filterRole = document.getElementById('filterRole');
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modalBody');
+
+    // Render the drone catalog cards
+    function renderCatalog(searchTerm = '', filterValue = '') {
+      catalogGrid.innerHTML = '';
+      const term = searchTerm.toLowerCase().trim();
+      const drones = Object.values(DRONE_DB);
+
+      const filteredDrones = drones.filter(drone => {
+        const matchesSearch = !term ||
+          drone.name.toLowerCase().includes(term) ||
+          drone.role.toLowerCase().includes(term) ||
+          drone.origin.toLowerCase().includes(term);
+        const roleMatch = filterValue.toLowerCase();
+        const matchesFilter = !filterValue || drone.role.toLowerCase().includes(roleMatch);
+        return matchesSearch && matchesFilter;
+      });
+
+      if (filteredDrones.length === 0) {
+        catalogGrid.innerHTML = '<p style="color:var(--muted); grid-column: 1 / -1;">No platforms match your criteria. Try a different search or filter.</p>';
+        return;
+      }
+
+      filteredDrones.forEach(drone => {
+        const card = document.createElement('div');
+        card.className = 'platform-card';
+        const thumb = document.createElement('div');
+        thumb.className = 'platform-thumb';
+        thumb.dataset.id = drone.id;
+        const img = document.createElement('img');
+        img.src = `media/${drone.thumbnail}`;
+        img.alt = `Thumbnail for ${drone.name}`;
+        img.onload = () => thumb.classList.remove('no-image');
+        img.onerror = () => thumb.classList.add('no-image');
+        thumb.appendChild(img);
+        const span = document.createElement('span');
+        span.textContent = 'IMAGE UNAVAILABLE';
+        thumb.appendChild(span);
+        card.appendChild(thumb);
+        card.innerHTML += `
+          <div class="meta">
+            <div class="title">${drone.name}</div>
+            <div>Role: ${drone.role}</div>
+            <div>Origin: ${drone.origin}</div>
+          </div>
+          <div class="actions">
+            <button class="btn" data-id="${drone.id}">View Profile</button>
+          </div>
+        `;
+        catalogGrid.appendChild(card);
+      });
+
+      catalogGrid.querySelectorAll('.btn').forEach(el => {
+        el.addEventListener('click', (e) => {
+          const droneId = e.currentTarget.dataset.id;
+          if (droneId) openModal(droneId);
+        });
+      });
+
+      catalogGrid.querySelectorAll('.platform-thumb').forEach(el => {
+        el.addEventListener('click', (e) => {
+          const droneId = e.currentTarget.dataset.id;
+          if (droneId) openModal(droneId);
+        });
+      });
+    }
+
+    // Opens the modal with platform data
+    function openModal(droneId) {
+      const drone = DRONE_DB[droneId];
+      if (!drone) return;
+
+      const formatSpecs = (specs) => Object.entries(specs).map(([key, value]) => `<li>${key}: ${value}</li>`).join('');
+      const formatComms = (comms) => Object.entries(comms).map(([key, value]) => `<li><strong>${key.toUpperCase()}</strong>: ${value}</li>`).join('');
+
+      const mediaHtml = `
+        <div class="media-section">
+          <h3 class="panel-title">Media Gallery</h3>
+          <div class="media-gallery">
+            ${drone.images.map((img, index) => `
+              <img class="media-preview" src="media/${img}" alt="Image ${index + 1}" data-type="image" data-src="media/${img}">
+            `).join('')}
+            ${drone.videos.map((vid, index) => `
+              <video class="media-preview" src="media/${vid}" preload="metadata" data-type="video" data-src="media/${vid}" onerror="this.classList.add('video-missing');"></video>
+            `).join('')}
+            ${drone.audio.map((aud, index) => `
+              <div class="media-preview audio-preview" data-type="audio" data-src="media/${aud}">Audio ${index + 1}</div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      const profileContent = `
+        <h2 class="panel-title">${drone.name} Profile</h2>
+        <div class="sub" style="margin-bottom:12px;">Origin: ${drone.origin} | Role: ${drone.role}</div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="detail-box">
+            <h3 class="panel-title" style="margin-top:0;">Key Specifications</h3>
+            <div class="specs">
+              <ul>${formatSpecs(drone.specs)}</ul>
+            </div>
+          </div>
+          <div class="detail-box">
+            <h3 class="panel-title" style="margin-top:0;">Communications & Sensors</h3>
+            <div class="specs">
+              <h4>C2 & Datalinks</h4>
+              <ul>${formatComms(drone.comms)}</ul>
+              <h4>Sensors</h4>
+              <ul>${drone.sensors.map(s => `<li>${s}</li>`).join('')}</ul>
+            </div>
+          </div>
+        </div>
+        <h3 class="panel-title">Battlefield Use & Assessment</h3>
+        <div class="specs">
+          <p><strong>Use:</strong> ${drone.battlefield_use}</p>
+          <p><strong>Threat Assessment:</strong> ${drone.threat_assessment}</p>
+          <p><strong>Countermeasures:</strong> ${drone.countermeasures}</p>
+        </div>
+        <h3 class="panel-title">Sources & Notes</h3>
+        <div class="specs">
+          <p>${drone.notes}</p>
+          <a class="press-link" href="${drone.press.url}" target="_blank">Source: ${drone.press.title} 🔗</a>
+        </div>
+        ${mediaHtml}
+      `;
+
+      modalBody.innerHTML = profileContent;
+
+      const closeBtn = document.createElement('button');
+      closeBtn.id = 'closeModalContent';
+      closeBtn.ariaLabel = 'Close profile';
+      closeBtn.textContent = '✕';
+      closeBtn.onclick = closeModal;
+      const existingCloseBtn = modal.querySelector('#closeModalContent');
+      if (existingCloseBtn) existingCloseBtn.remove();
+      modalBody.parentElement.prepend(closeBtn);
+
+      modalBody.querySelectorAll('.media-preview').forEach(el => {
+        el.addEventListener('click', (e) => {
+          const type = e.currentTarget.dataset.type;
+          const src = e.currentTarget.dataset.src;
+          openMediaViewer(type, src, droneId);
+        });
+      });
+
+      modal.setAttribute('aria-hidden', 'false');
+      modal.dataset.currentDrone = droneId; // Store current drone ID
+    }
+
+    // Function to open media viewer in the same modal
+    function openMediaViewer(type, src, droneId) {
+      let content = '';
+      if (type === 'image') {
+        content = `<img src="${src}" style="max-width:100%; max-height:80vh; display:block; margin:0 auto;">`;
+      } else if (type === 'video') {
+        content = `<video controls autoplay src="${src}" style="max-width:100%; max-height:80vh; display:block; margin:0 auto;"></video>`;
+      } else if (type === 'audio') {
+        content = `<audio controls autoplay src="${src}" style="width:100%; display:block; margin:0 auto;"></audio>`;
+      }
+
+      modalBody.innerHTML = content;
+
+      const closeBtn = document.createElement('button');
+      closeBtn.id = 'closeModalContent';
+      closeBtn.ariaLabel = 'Close media';
+      closeBtn.textContent = '✕';
+      closeBtn.onclick = () => {
+        openModal(droneId); // Restore original profile content
+      };
+      const existingCloseBtn = modal.querySelector('#closeModalContent');
+      if (existingCloseBtn) existingCloseBtn.remove();
+      modalBody.parentElement.prepend(closeBtn);
+    }
+
+    // Closes the modal
+    function closeModal() {
+      modal.setAttribute('aria-hidden', 'true');
+      const closeBtn = document.getElementById('closeModalContent');
+      if (closeBtn) closeBtn.remove();
+      modalBody.innerHTML = '';
+      delete modal.dataset.currentDrone; // Clear current drone ID
+    }
+
+    // Render other page content
+    function renderCommsContent() {
+      document.getElementById('commsContent').innerHTML = `
+        <h3>UAS Communications Overview</h3>
+        <p>Russian <abbr title="Unmanned Aerial System">UAS</abbr> utilize a diverse and layered communication architecture to ensure redundancy and survivability in contested <abbr title="Electronic Warfare">EW</abbr> environments, moving from simple <abbr title="Remote Control">RC</abbr> to highly sophisticated encrypted datalinks and autonomous <abbr title="Global Navigation Satellite System">GNSS</abbr> systems.</p>
+        <ul>
+          <li><strong>Loitering Munitions (e.g., Geran-2):</strong> Primarily rely on <strong>autonomous <abbr title="Global Navigation Satellite System">GNSS</abbr>/<abbr title="Inertial Navigation System">INS</abbr></strong> guidance for the main flight path, with minimal or no radio control during the terminal phase to defeat <abbr title="Electronic Warfare">EW</abbr>. A key resilience feature.</li>
+          <li><strong>Tactical <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> (e.g., Orlan-10):</strong> Use <strong>encrypted medium-range <abbr title="Radio Frequency">RF</abbr> datalinks</strong> (often in the UHF/L-band spectrum) to relay high-bandwidth sensor data and receive <strong><abbr title="Command and Control">C2</abbr></strong>. Prone to jamming/interception, requiring frequent frequency hopping and power management.</li>
+          <li><strong><abbr title="First-Person View">FPV</abbr> Assault (Improvised):</strong> Uses <strong>low-latency analog/digital links</strong> (e.g., 2.4 <abbr title="Gigahertz">GHz</abbr>, 5.8 <abbr title="Gigahertz">GHz</abbr>) for pilot view and control. Highly vulnerable to localized <strong>spot jamming</strong> but the low cost allows for high attrition rates.</li>
+          <li><strong>Fiber-Optic Variants:</strong> A notable 2025 innovation that provides <strong>absolute <abbr title="Electronic Warfare">EW</abbr> immunity</strong> by transmitting all <abbr title="Command and Control">C2</abbr> and video through a trailing fiber-optic cable. This drastically limits range but ensures mission success in high-threat <abbr title="Electronic Warfare">EW</abbr> pockets.</li>
+        </ul>
+      `;
+    }
+
+    function renderReportContent() {
+      document.getElementById('reportContent').innerHTML = `
+        <h3>EXECUTIVE SUMMARY: UKRAINIAN DRONE WARFARE & UK IMPLICATIONS</h3>
+        <p>The Ukraine conflict is a <strong>crucible for <abbr title="Unmanned Aerial System">UAS</abbr> development</strong> and <abbr title="Counter-Unmanned Aerial System">C-UAS</abbr> technology, with Russia demonstrating a scalable, hybrid approach combining long-range strategic strikes with massed tactical assault drones.</p>
+        <h4>Key Findings:</h4>
+        <ul>
+          <li><strong>Massed, Layered Attacks:</strong> Russia effectively uses <strong>Geran-2 loitering munitions</strong> as a strategic harassment tool, often paired with low-cost decoys (Gerbera) to saturate Ukrainian air defenses, imposing high economic costs on the defender.</li>
+          <li><strong>Fiber-Optic <abbr title="First-Person View">FPV</abbr> Reshaping Close Combat:</strong> The emergence of <abbr title="Electronic Warfare">EW</abbr>-immune, fiber-optic <abbr title="First-Person View">FPV</abbr> drones is a significant adaptation, challenging the traditional effectiveness of close-range <abbr title="Electronic Warfare">EW</abbr> systems and demanding a re-evaluation of close-quarter defense tactics.</li>
+          <li><strong><abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr> Dominance:</strong> Platforms like Orlan-10 and SuperCam ensure persistent battlefield <strong><abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr></strong> and target acquisition, directly enabling high-tempo kinetic and electronic attacks.</li>
+        </ul>
+        <h4>Implications for the UK & NATO:</h4>
+        <p>The UK must prioritize the development and integration of <strong>low-cost, multi-layered <abbr title="Counter-Unmanned Aerial System">C-UAS</abbr> capabilities</strong>, specifically: 1) <strong>Integrated Air Defence:</strong> Deploying effective, cost-efficient interceptors (e.g., counter-drones) against massed loitering threats. 2) <strong><abbr title="Electronic Warfare">EW</abbr> Resilience:</strong> Investing in technologies that can defeat or circumvent fiber-optic systems, potentially through non-kinetic means like acoustic targeting and improved sensor-fusion for detection. 3) <strong>Supply Chain Interdiction:</strong> Actively targeting the global supply chains for Commercial Off-The-Shelf (COTS) components used in <abbr title="First-Person View">FPV</abbr> and loitering munitions.</p>
+      `;
+    }
+
+    function renderSourcesContent() {
+      document.getElementById('sourcesList').innerHTML = `
+        <ul>
+          <li>IISS: International Institute for Strategic Studies — Analysis on drone production and use.</li>
+          <li>ISW: Institute for the Study of War — Daily Russian Offensive Campaign Assessments.</li>
+          <li>Bellingcat: Investigative journalism on component supply and tactical use.</li>
+          <li>Various Forbes, Reuters, and BBC open-source reporting and expert commentary.</li>
+        </ul>
+        <p style="margin-top:12px;">All links embedded within the platform profiles provide direct citation.</p>
+      `;
+    }
+
+    function renderComparisonTable() {
+      const tableHtml = `
+        <table>
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th>Role</th>
+              <th>Range (Est.)</th>
+              <th>Payload/Warhead</th>
+              <th>EW Vulnerability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Geran-2</td>
+              <td>Strategic Loitering</td>
+              <td>~1500+ km</td>
+              <td>~50 kg HE</td>
+              <td>Low (GNSS/INS)</td>
+            </tr>
+            <tr>
+              <td>ZALA Lancet</td>
+              <td>Tactical Loitering</td>
+              <td>10-40 km</td>
+              <td>2-10 kg HE</td>
+              <td>Medium/Low (Variants)</td>
+            </tr>
+            <tr>
+              <td>Orlan-10</td>
+              <td>Tactical ISR</td>
+              <td>120+ km</td>
+              <td>~15 kg (Sensors)</td>
+              <td>High (RF Datalink)</td>
+            </tr>
+            <tr>
+              <td>FPV Assault</td>
+              <td>Short-range Attack</td>
+              <td><5 km</td>
+              <td>Munition</td>
+              <td>Very High (RF)</td>
+            </tr>
+            <tr>
+              <td>Fiber-Optic FPV</td>
+              <td>EW-Resistant Attack</td>
+              <td>10-41 km</td>
+              <td>1-3 kg HE</td>
+              <td>None (Cable)</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+      document.getElementById('comparisonTable').innerHTML = tableHtml;
+    }
+
+    // Event Listeners and Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.chip').forEach(b => b.addEventListener('click', (e) => showPage(b.dataset.page, e)));
+      function showPage(id, event) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        const page = document.getElementById(id);
+        if (page) {
+          page.classList.add('active');
+          if (id === 'comms') renderCommsContent();
+          if (id === 'report') renderReportContent();
+          if (id === 'sources') renderSourcesContent();
+          if (id === 'comparisons') renderComparisonTable();
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      searchInput.addEventListener('input', () => renderCatalog(searchInput.value, filterRole.value));
+      filterRole.addEventListener('change', () => renderCatalog(searchInput.value, filterRole.value));
+
+      renderCatalog();
+
+      document.getElementById('downloadBtn').addEventListener('click', () => {
+        const htmlContent = document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Military_Brief_Drones_Ukraine_2025.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    });
+  </script>
+</body>
+</html>
