@@ -91,16 +91,9 @@
     }
     main {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 1fr;
       gap: 16px;
       flex-grow: 1;
-    }
-    aside {
-      background: var(--glass);
-      padding: 16px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.02);
-      overflow-y: auto;
     }
     section {
       background: var(--glass);
@@ -370,9 +363,6 @@
       main {
         grid-template-columns: 1fr;
       }
-      aside {
-        max-height: 300px;
-      }
     }
   </style>
 </head>
@@ -395,20 +385,6 @@
       <button class="btn-download" id="downloadBtn">Download Report</button>
     </nav>
     <main>
-      <aside>
-        <div class="panel-title">Contents</div>
-        <ul>
-          <li>Methods of drone communications</li>
-          <li>Catalog: loitering munitions, tactical <abbr title="Intelligence, Surveillance, Reconnaissance">ISR</abbr>, <abbr title="First-Person View">FPV</abbr>, swarm</li>
-          <li>Platform profiles (click thumbnails for specs)</li>
-          <li>In‑depth UK-focused strategic report</li>
-          <li>Drone comparisons (table view)</li>
-          <li>Statistics: percentages, numbers, success rates</li>
-          <li>Download report as HTML</li>
-        </ul>
-        <div class="panel-title" style="margin-top:12px">Notes</div>
-        <div style="color:var(--muted);font-size:0.9rem">This site is a guide to drones used in the Ukraine conflict for UAS identification and planning. <abbr title="Acronyms">Acronyms</abbr> are expandable on hover.</div>
-      </aside>
       <section>
         <div id="catalog" class="page active">
           <h2 class="panel-title">Catalog — Click thumbnails to open platform profiles</h2>
@@ -529,7 +505,7 @@
         specs: { range: '5-20 km', endurance: '20-60 min', payload: '~3 kg' },
         thumbnail: 'kub-bla_thumb.jpg',
         images: ['kub-bla_img1.jpg', 'kub-bla_img2.jpg', 'kub-bla_img3.jpg'],
-        videos: ['kub-bla_vid1.webm', 'kub-bla_vid2.webm', 'kub-bla_vid3.mp4'],
+        videos: ['kub-bla_vid1.mp4', 'kub-bla_vid2.webm', 'kub-bla_vid3.mp4'],
         audio: ['kub-bla_audio1.mp3', 'kub-bla_audio2.mp3', 'kub-bla_audio3.mp3']
       },
       'orlan-10': {
@@ -790,7 +766,7 @@
       });
 
       modal.setAttribute('aria-hidden', 'false');
-      modal.dataset.currentDrone = droneId; // Store current drone ID
+      modal.dataset.currentDrone = droneId;
     }
 
     // Function to open media viewer in the same modal
@@ -811,7 +787,7 @@
       closeBtn.ariaLabel = 'Close media';
       closeBtn.textContent = '✕';
       closeBtn.onclick = () => {
-        openModal(droneId); // Restore original profile content
+        openModal(droneId);
       };
       const existingCloseBtn = modal.querySelector('#closeModalContent');
       if (existingCloseBtn) existingCloseBtn.remove();
@@ -824,7 +800,7 @@
       const closeBtn = document.getElementById('closeModalContent');
       if (closeBtn) closeBtn.remove();
       modalBody.innerHTML = '';
-      delete modal.dataset.currentDrone; // Clear current drone ID
+      delete modal.dataset.currentDrone;
     }
 
     // Render other page content
